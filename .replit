@@ -1,0 +1,41 @@
+modules = ["java", "java-18"]
+
+[nix]
+channel = "stable-24_05"
+packages = ["maven"]
+
+[workflows]
+runButton = "Project"
+
+[[workflows.workflow]]
+name = "Project"
+mode = "parallel"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "Working Capital Management App"
+
+[[workflows.workflow.tasks]]
+task = "workflow.run"
+args = "run_spring_boot"
+
+[[workflows.workflow]]
+name = "Working Capital Management App"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "mvn clean spring-boot:run -Dspring-boot.run.arguments=\"--server.port=5000\""
+waitForPort = 5000
+
+[[workflows.workflow]]
+name = "run_spring_boot"
+author = "agent"
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "cd /home/runner && ./mvnw spring-boot:run"
+
+[deployment]
+run = ["sh", "-c", "mvn clean spring-boot:run -Dspring-boot.run.arguments=\"--server.port=5000\""]
