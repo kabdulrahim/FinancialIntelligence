@@ -1,4 +1,4 @@
-modules = ["java", "java-18"]
+modules = ["java", "java-18", "java-17"]
 
 [nix]
 channel = "stable-24_05"
@@ -26,7 +26,7 @@ author = "agent"
 
 [[workflows.workflow.tasks]]
 task = "shell.exec"
-args = "mvn clean spring-boot:run -Dspring-boot.run.arguments=\"--server.port=5000\""
+args = "mvn spring-boot:run -Dspring-boot.run.jvmArguments=\"-Dserver.port=5000\""
 waitForPort = 5000
 
 [[workflows.workflow]]
@@ -38,4 +38,4 @@ task = "shell.exec"
 args = "cd /home/runner && ./mvnw spring-boot:run"
 
 [deployment]
-run = ["sh", "-c", "mvn clean spring-boot:run -Dspring-boot.run.arguments=\"--server.port=5000\""]
+run = ["sh", "-c", "mvn spring-boot:run -Dspring-boot.run.jvmArguments=\"-Dserver.port=5000\""]
