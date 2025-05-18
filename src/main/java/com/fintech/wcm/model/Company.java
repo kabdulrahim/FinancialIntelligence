@@ -4,84 +4,77 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
- * Represents a company in the system.
- * Can be either SME (Small-Medium Enterprise) or MNE (Multinational Enterprise).
+ * Entity class for companies in the application.
  */
 @Entity
 @Table(name = "companies")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@EntityListeners(AuditingEntityListener.class)
 public class Company {
+
+    public enum CompanyType {
+        SME, MNE
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "name", length = 255, nullable = false, unique = true)
     private String name;
 
-    @Column(name = "type", nullable = false)
+    @Column(name = "type", length = 10, nullable = false)
     @Enumerated(EnumType.STRING)
     private CompanyType type;
 
-    @Column(name = "tax_id")
+    @Column(name = "tax_id", length = 50)
     private String taxId;
-    
-    @Column(name = "registration_number")
+
+    @Column(name = "registration_number", length = 50)
     private String registrationNumber;
 
-    @Column(name = "address")
+    @Column(name = "address", length = 255)
     private String address;
 
-    @Column(name = "city")
+    @Column(name = "city", length = 100)
     private String city;
 
-    @Column(name = "country")
+    @Column(name = "country", length = 100)
     private String country;
 
-    @Column(name = "postal_code")
+    @Column(name = "postal_code", length = 20)
     private String postalCode;
 
-    @Column(name = "phone")
+    @Column(name = "phone", length = 50)
     private String phone;
 
-    @Column(name = "website")
+    @Column(name = "website", length = 255)
     private String website;
 
-    @Column(name = "industry")
+    @Column(name = "industry", length = 100)
     private String industry;
 
-    @Column(name = "fiscal_year_end")
+    @Column(name = "fiscal_year_end", length = 20)
     private String fiscalYearEnd;
 
-    @Column(name = "currency_code", nullable = false)
+    @Column(name = "currency_code", length = 3, nullable = false)
     private String currencyCode;
 
     @Column(name = "is_active", nullable = false)
-    private boolean active = true;
+    private boolean isActive = true;
 
-    @CreatedDate
-    @Column(name = "created_at", nullable = false, updatable = false)
+    @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
-    @LastModifiedDate
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    /**
-     * Enum representing company types.
-     */
-    public enum CompanyType {
-        SME, // Small to Medium Enterprise
-        MNE  // Multinational Enterprise
-    }
+    @OneToMany(mappedBy = "company", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<User> users;
 }

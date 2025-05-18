@@ -5,7 +5,7 @@ import com.fintech.wcm.dto.UserDto;
 import java.util.List;
 
 /**
- * Service interface for managing user-related operations.
+ * Service interface for user management.
  */
 public interface UserService {
     
@@ -21,7 +21,7 @@ public interface UserService {
      * Update an existing user.
      * 
      * @param id the user ID
-     * @param userDto the user data
+     * @param userDto the updated user data
      * @return the updated user
      */
     UserDto updateUser(Long id, UserDto userDto);
@@ -46,7 +46,7 @@ public interface UserService {
      * Get users by company ID.
      * 
      * @param companyId the company ID
-     * @return a list of users
+     * @return list of users in the company
      */
     List<UserDto> getUsersByCompanyId(Long companyId);
     
@@ -70,16 +70,16 @@ public interface UserService {
      * Update a user's roles.
      * 
      * @param id the user ID
-     * @param roles the roles to assign
+     * @param roleNames the role names
      * @return the updated user
      */
-    UserDto updateUserRoles(Long id, List<String> roles);
+    UserDto updateUserRoles(Long id, List<String> roleNames);
     
     /**
      * Check if a username is available.
      * 
      * @param username the username
-     * @return true if the username is available
+     * @return true if available
      */
     boolean isUsernameAvailable(String username);
     
@@ -87,7 +87,7 @@ public interface UserService {
      * Check if an email is available.
      * 
      * @param email the email
-     * @return true if the email is available
+     * @return true if available
      */
     boolean isEmailAvailable(String email);
 }

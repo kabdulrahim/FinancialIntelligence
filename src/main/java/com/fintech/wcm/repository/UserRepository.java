@@ -8,48 +8,48 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * Repository for accessing and manipulating User entities.
+ * Repository interface for User entity.
  */
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
     
     /**
-     * Find a user by their username.
+     * Find a user by username.
      * 
-     * @param username the username to search for
-     * @return an Optional containing the user if found
+     * @param username the username
+     * @return the user if found
      */
     Optional<User> findByUsername(String username);
     
     /**
-     * Find a user by their email address.
+     * Find a user by email.
      * 
-     * @param email the email to search for
-     * @return an Optional containing the user if found
+     * @param email the email
+     * @return the user if found
      */
     Optional<User> findByEmail(String email);
     
     /**
-     * Check if a username already exists.
+     * Find users by company ID.
      * 
-     * @param username the username to check
-     * @return true if the username exists, false otherwise
+     * @param companyId the company ID
+     * @return list of users in the company
+     */
+    List<User> findByCompanyId(Long companyId);
+    
+    /**
+     * Check if a username exists.
+     * 
+     * @param username the username
+     * @return true if the username exists
      */
     boolean existsByUsername(String username);
     
     /**
-     * Check if an email already exists.
+     * Check if an email exists.
      * 
-     * @param email the email to check
-     * @return true if the email exists, false otherwise
+     * @param email the email
+     * @return true if the email exists
      */
     boolean existsByEmail(String email);
-    
-    /**
-     * Find all users belonging to a specific company.
-     * 
-     * @param companyId the company ID
-     * @return a list of users for the company
-     */
-    List<User> findByCompanyId(Long companyId);
 }

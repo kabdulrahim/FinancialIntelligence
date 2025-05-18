@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -17,12 +18,6 @@ import java.util.Set;
 @AllArgsConstructor
 public class Role {
 
-    public static final String ROLE_ADMIN = "ROLE_ADMIN";
-    public static final String ROLE_OWNER = "ROLE_OWNER";
-    public static final String ROLE_CFO = "ROLE_CFO";
-    public static final String ROLE_ACCOUNTANT = "ROLE_ACCOUNTANT";
-    public static final String ROLE_USER = "ROLE_USER";
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,5 +29,5 @@ public class Role {
     private String description;
 
     @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
+    private Set<User> users = new HashSet<>();
 }
