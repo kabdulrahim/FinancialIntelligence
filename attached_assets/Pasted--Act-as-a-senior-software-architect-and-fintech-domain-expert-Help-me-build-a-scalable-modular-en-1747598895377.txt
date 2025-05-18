@@ -1,0 +1,55 @@
+"Act as a senior software architect and fintech domain expert. Help me build a scalable, modular, enterprise-grade working capital management application using Java and Spring Boot for the backend. The goal is to serve both small to medium-sized enterprises (SMEs) and multinational enterprises (MNEs), with full support for tracking, forecasting, and optimizing working capital components. Generate all backend logic, domain models, database schema, RESTful APIs, and integrations. Focus on modularity, clean architecture, and scalable microservices (if needed). Include the following components:"
+
+📦 Requirements to Include in the Prompt:
+plaintext
+Copy
+Edit
+1. Working Capital Core Engine:
+   - Calculate Net Working Capital
+   - Monitor DSO, DPO, Inventory Days, CCC
+   - Liquidity ratios (Current, Quick, WC Turnover)
+   - Alerts for cash gaps or liquidity issues
+
+2. Domain Models & Database:
+   - Companies (with SME vs MNE flags)
+   - Accounts Receivable, Payable, Inventory, Cash, Short-term Liabilities
+   - Transactions, Invoices, Payments
+   - Users & Roles (Owner, CFO, Accountant, etc.)
+   - Multi-currency support
+   - Audit logs and change tracking
+
+3. Data Import & Integrations:
+   - REST API connectors for accounting platforms (QuickBooks, Xero, SAP, Oracle)
+   - CSV importers for bank/accounting data
+   - Scheduled jobs for data sync
+   - OAuth 2.0 support
+
+4. AI & Forecasting (for future implementation):
+   - Modular service for cash flow forecasting (placeholder interface)
+   - Tagging and trend detection using AI
+   - Dynamic scenario modeling engine
+
+5. API Design:
+   - Full CRUD REST APIs for all models
+   - Aggregated endpoints for dashboards (e.g., GET /api/dashboard/summary)
+   - Role-based access control
+
+6. Architecture & Tech Stack:
+   - Java 17+
+   - Spring Boot 3.x
+   - Spring Data JPA with PostgreSQL
+   - Spring Security (OAuth2/JWT)
+   - Flyway for DB migrations
+   - OpenAPI/Swagger documentation
+   - Optional: Docker-compose setup for local dev with PostgreSQL
+
+7. Testing & Quality:
+   - Unit tests with JUnit + Mockito
+   - Integration tests for services & controllers
+   - Postman collection or Swagger UI
+
+8. Best Practices:
+   - Clean Code & SOLID principles
+   - DTO separation from entities
+   - Configurable with application.yml or application.properties
+   - Modular structure: domain, service, controller, repository layers
