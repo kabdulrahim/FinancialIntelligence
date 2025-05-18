@@ -2,7 +2,7 @@ modules = ["java", "java-18", "java-17"]
 
 [nix]
 channel = "stable-24_05"
-packages = ["maven"]
+packages = ["maven", "jdk"]
 
 [workflows]
 runButton = "Project"
