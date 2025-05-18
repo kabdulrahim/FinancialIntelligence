@@ -8,6 +8,7 @@
 /home/runner/workspace/src/main/java/com/fintech/wcm/controller/DataImportController.java
 /home/runner/workspace/src/main/java/com/fintech/wcm/model/Role.java
 /home/runner/workspace/src/main/java/com/fintech/wcm/repository/InventoryRepository.java
+/home/runner/workspace/src/main/java/com/fintech/wcm/repository/CurrencyRepository.java
 /home/runner/workspace/src/main/java/com/fintech/wcm/security/UserDetailsServiceImpl.java
 /home/runner/workspace/src/main/java/com/fintech/wcm/repository/AccountsPayableRepository.java
 /home/runner/workspace/src/main/java/com/fintech/wcm/service/impl/DataImportServiceImpl.java
@@ -15,6 +16,7 @@
 /home/runner/workspace/src/main/java/com/fintech/wcm/config/CorsConfig.java
 /home/runner/workspace/src/main/java/com/fintech/wcm/repository/UserRepository.java
 /home/runner/workspace/src/main/java/com/fintech/wcm/dto/ImportResultDto.java
+/home/runner/workspace/src/main/java/com/fintech/wcm/repository/RoleRepository.java
 /home/runner/workspace/src/main/java/com/fintech/wcm/service/WorkingCapitalService.java
 /home/runner/workspace/src/main/java/com/fintech/wcm/service/AlertService.java
 /home/runner/workspace/src/main/java/com/fintech/wcm/repository/PaymentRepository.java
