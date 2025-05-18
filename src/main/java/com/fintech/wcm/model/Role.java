@@ -5,9 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Set;
+
 /**
- * Represents a role for user authorization.
- * Examples include: ADMIN, OWNER, CFO, ACCOUNTANT, etc.
+ * Entity class for roles in the application.
  */
 @Entity
 @Table(name = "roles")
@@ -16,20 +17,22 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Role {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
-    @Column(name = "name", unique = true, nullable = false)
-    private String name;
-
-    @Column(name = "description")
-    private String description;
-    
-    // Standard predefined roles
     public static final String ROLE_ADMIN = "ROLE_ADMIN";
     public static final String ROLE_OWNER = "ROLE_OWNER";
     public static final String ROLE_CFO = "ROLE_CFO";
     public static final String ROLE_ACCOUNTANT = "ROLE_ACCOUNTANT";
     public static final String ROLE_USER = "ROLE_USER";
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name", length = 50, nullable = false, unique = true)
+    private String name;
+
+    @Column(name = "description", length = 255)
+    private String description;
+
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 }
